@@ -76,7 +76,106 @@ struct ProductCardView: View {
                 Spacer()
             }.padding()
             
+            HStack{
+                VStack(alignment: .leading, spacing: 20){
+                    Text("Производство")
+                    Text("Энергитическая ценность, ккал/100г")
+                    Text("Жиры/100г")
+                    Text("Белки/100г")
+                    Text("Угелеводы/100г")
+                }
+                Spacer()
+                VStack(alignment: .trailing, spacing: 20){
+                    Text("Россия, Красндарский край")
+                    Text("25 ккал, 105 кДж")
+                    Text("0,1г")
+                    Text("1,3г")
+                    Text("3,3г")
+                }
+            }.padding()
             
+            HStack {
+                Text("Все характеристики")
+                    .foregroundColor(.green)
+                    .font(.headline.bold())
+                Spacer()
+            }.padding()
+            
+            HStack{
+                Text("Отзывы").font(.title.bold())
+                Spacer()
+                Text("Все 152")
+                    .foregroundColor(.green)
+                    .font(.headline)
+            }.padding()
+            
+            TabView {
+                Group {
+                    VStack(alignment: .leading, spacing: 10){
+                        Text("Александр В.")
+                            .font(.title.bold())
+                        Text("7 мая 2021")
+                        HStack{
+                            Image(systemName: "star.fill")
+                            Image(systemName: "star.fill")
+                            Image(systemName: "star.fill")
+                            Image(systemName: "star.fill")
+                            Image(systemName: "star")
+                        }.foregroundColor(.yellow)
+                        Text("Хорошая добавка, мне очень понравилась! Хочу, чтобы все добавки были такими!")
+                    }
+                }.frame(width: 250, height: 150)
+                    .padding()
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(15)
+                
+                Group {
+                    VStack(alignment: .leading, spacing: 10){
+                        Text("Александр В.")
+                            .font(.title.bold())
+                        Text("7 мая 2021")
+                        HStack{
+                            Image(systemName: "star.fill")
+                            Image(systemName: "star.fill")
+                            Image(systemName: "star.fill")
+                            Image(systemName: "star.fill")
+                            Image(systemName: "star")
+                        }.foregroundColor(.yellow)
+                        Text("Хорошая добавка, мне очень понравилась! Хочу, чтобы все добавки были такими!")
+                    }
+                }.frame(width: 250, height: 150)
+                    .padding()
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(15)
+                    
+                
+                
+            }.tabViewStyle(PageTabViewStyle())
+                .frame(width: 343, height: 257)
+            Button {
+                
+            } label: {
+                ZStack {
+                    RoundedRectangle(cornerSize: CGSize(width: 20, height: 10))
+                        .stroke()
+                    
+                    Text("Оставить отзыв").font(.title3.bold())
+                        .padding(7)
+                }
+                .foregroundColor(.green)
+                .padding()
+            }
+            VStack {
+                ZStack {
+                    RoundedRectangle(cornerSize: CGSize(width: 20, height: 10))
+                        .foregroundColor(.gray.opacity(0.2))
+                    .frame( height: 50)
+                    RoundedRectangle(cornerSize: CGSize(width: 20, height: 10))
+                        .foregroundColor(.white)
+                    .frame(width: 190, height: 46)
+                    .offset(x: -83)
+                }
+            }.padding()
         }
     }
 }
