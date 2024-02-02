@@ -32,19 +32,6 @@ struct ProductCardView: View {
     var body: some View {
         ScrollView {
             
-            VStack {
-                HStack {
-                    Image(systemName: "arrow.left")
-                    Spacer()
-                    Image(systemName: "doc.richtext")
-                    Image(systemName: "square.and.arrow.up")
-                    Image(systemName: "heart")
-                }.foregroundColor(.green)
-                    .padding()
-            }
-            
-            Divider()
-            
             HStack {
                 Text("Цена по карте")
                     .foregroundColor(.white)
