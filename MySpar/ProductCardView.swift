@@ -8,6 +8,27 @@
 import SwiftUI
 
 struct ProductCardView: View {
+    enum tType: String, CaseIterable, Identifiable {
+        case kg
+        case sht
+        
+        var id: Self {
+            self
+        }
+        
+        var title: String {
+            switch self {
+                
+            case .kg:
+                return "шт"
+            case .sht:
+                return "кг"
+            }
+        }
+    }
+    
+    @State private var segment: tType = .kg
+    
     var body: some View {
         ScrollView {
             
@@ -147,7 +168,7 @@ struct ProductCardView: View {
                     .padding()
                     .background(Color.gray.opacity(0.1))
                     .cornerRadius(15)
-                    
+                
                 
                 
             }.tabViewStyle(PageTabViewStyle())
@@ -165,19 +186,38 @@ struct ProductCardView: View {
                 .foregroundColor(.green)
                 .padding()
             }
-            VStack {
-                ZStack {
-                    RoundedRectangle(cornerSize: CGSize(width: 20, height: 10))
-                        .foregroundColor(.gray.opacity(0.2))
-                    .frame( height: 50)
-                    RoundedRectangle(cornerSize: CGSize(width: 20, height: 10))
-                        .foregroundColor(.white)
-                    .frame(width: 190, height: 46)
-                    .offset(x: -83)
+            
+            Picker("", selection: $segment) {
+                ForEach(tType.allCases) { category in
+                    Text(category.title).tag(category)
                 }
+            }.pickerStyle(.segmented)
+            
+            HStack{
+                VStack{
+                    Text("55.9 р/кг")
+                        .font(.title2.bold())
+                    Text("~199.0~")
+                }
+                Spacer()
+                ZStack{
+                    RoundedRectangle(cornerRadius: 25.0)
+                        .foregroundColor(.green)
+                    HStack{
+                        Image(systemName: "minus")
+                        VStack{
+                            Text("1 шт").bold()
+                            Text("120,0р").opacity(0.8)
+                        }
+                        Image(systemName: "plus")
+                    }.foregroundColor(.white)
+                }.frame(width: 170)
             }.padding()
+            
         }
+        
     }
+    
 }
 
 #Preview {
